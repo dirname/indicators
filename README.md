@@ -28,6 +28,10 @@ needs of trading
 | BenchmarkSMA_Update-12 | 58746352 | 17.24 ns/op
 | BenchmarkVariance_Update-12 | 44447077 | 23.24 ns/op
 | BenchmarkVariance_Sum-12 | 44626918 | 24.86 ns/op
+| BenchmarkDEMA_Update-12 | 61096374 | 19.85 ns/op
+| BenchmarkEMA_Update-12 | 164322492 | 7.148 ns/op
+| BenchmarkTEMA_Update-12 | 44629740 | 25.66 ns/op
+| BenchmarkWMA_Update-12 | 50345283 | 22.75 ns/op
 
 # Indexes
 

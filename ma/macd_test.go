@@ -1,4 +1,4 @@
-package macd
+package ma
 
 import (
 	"reflect"
@@ -45,7 +45,7 @@ func TestEMA_calcEMA(t *testing.T) {
 	}
 	for _, tt := range tests {
 		t.Run(tt.name, func(t *testing.T) {
-			m := &EMA{
+			m := &emaCalculator{
 				Ticker: tt.fields.Ticker,
 				Temp:   tt.fields.Temp,
 				Period: tt.fields.Period,
@@ -60,9 +60,9 @@ func TestEMA_calcEMA(t *testing.T) {
 
 func TestMACD_Sum(t *testing.T) {
 	type fields struct {
-		slow   *EMA
-		fast   *EMA
-		signal *EMA
+		slow   *emaCalculator
+		fast   *emaCalculator
+		signal *emaCalculator
 		DIF    float64
 		DEM    float64
 		OSC    float64
@@ -121,9 +121,9 @@ func TestMACD_Sum(t *testing.T) {
 
 func TestMACD_Update(t *testing.T) {
 	type fields struct {
-		slow   *EMA
-		fast   *EMA
-		signal *EMA
+		slow   *emaCalculator
+		fast   *emaCalculator
+		signal *emaCalculator
 		DIF    float64
 		DEM    float64
 		OSC    float64
@@ -138,7 +138,7 @@ func TestMACD_Update(t *testing.T) {
 		args   args
 	}{
 		{"TestMACD_Update", fields{
-			slow: &EMA{
+			slow: &emaCalculator{
 				Ticker: &Ticker{
 					Price: 0,
 					Date:  time.Now(),
@@ -149,7 +149,7 @@ func TestMACD_Update(t *testing.T) {
 				MA:     0,
 				K:      0,
 			},
-			fast: &EMA{
+			fast: &emaCalculator{
 				Ticker: &Ticker{
 					Price: 0,
 					Date:  time.Now(),
@@ -160,7 +160,7 @@ func TestMACD_Update(t *testing.T) {
 				MA:     0,
 				K:      0,
 			},
-			signal: &EMA{
+			signal: &emaCalculator{
 				Ticker: &Ticker{
 					Price: 0,
 					Date:  time.Now(),
@@ -238,40 +238,6 @@ func TestTicker_NewMACD(t1 *testing.T) {
 			if got := t.NewMACD(tt.args.inFastPeriod, tt.args.inSlowPeriod, tt.args.inSignalPeriod); reflect.DeepEqual(got, tt.want) {
 				t1.Errorf("NewMACD() = %v, want %v", got, tt.want)
 			}
-		})
-	}
-}
-
-func TestTicker_setPrice(t1 *testing.T) {
-	type fields struct {
-		Price float64
-		Date  time.Time
-	}
-	type args struct {
-		price float64
-		date  time.Time
-	}
-	tests := []struct {
-		name   string
-		fields fields
-		args   args
-	}{
-		{"TestTicker_setPrice", fields{
-			Price: 0,
-			Date:  time.Now(),
-		}, args{
-			price: 0,
-			date:  time.Time{},
-		}},
-		// TODO: Add test cases.
-	}
-	for _, tt := range tests {
-		t1.Run(tt.name, func(t1 *testing.T) {
-			t := &Ticker{
-				Price: tt.fields.Price,
-				Date:  tt.fields.Date,
-			}
-			t.setPrice(tt.args.price, tt.args.date)
 		})
 	}
 }

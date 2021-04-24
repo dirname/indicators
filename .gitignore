@@ -16,3 +16,6 @@
 
 # GoLand cache
 .idea/
+
+# example for dev test
+example/

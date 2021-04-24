@@ -4,12 +4,6 @@ import (
 	"time"
 )
 
-//Ticker ticker price information
-type Ticker struct {
-	Price float64
-	Date  time.Time
-}
-
 //smaCalculator simple MA
 type smaCalculator struct {
 	*Ticker
@@ -59,10 +53,4 @@ func (m *SMA) Update(price float64, date time.Time) {
 //Sum Returns the SMA value of the current SMA object
 func (m *SMA) Sum() float64 {
 	return m.Value
-}
-
-//setPrice set up price
-func (t *Ticker) setPrice(price float64, date time.Time) {
-	t.Price = price
-	t.Date = date
 }
