@@ -106,7 +106,7 @@ func TestTicker_NewStdDev(t1 *testing.T) {
 	}
 }
 
-func BenchmarkVariance_Sum(b *testing.B) {
+func BenchmarkStdDev_Sum(b *testing.B) {
 	ticker := &Ticker{}
 	StdDev := ticker.NewStdDev(14, 1.0)
 	for n := 0; n < b.N; n++ {

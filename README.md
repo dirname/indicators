@@ -32,6 +32,8 @@ needs of trading
 | BenchmarkEMA_Update-12 | 164322492 | 7.148 ns/op
 | BenchmarkTEMA_Update-12 | 44629740 | 25.66 ns/op
 | BenchmarkWMA_Update-12 | 50345283 | 22.75 ns/op
+| BenchmarkVariance_Update-12 | 51031256 | 21.86 ns/op
+| BenchmarkStdDev_Sum-12 | 51484468 | 22.48 ns/op
 
 # Indexes
 
