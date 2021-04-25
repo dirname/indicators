@@ -1394,8 +1394,8 @@ func Test_mamaCalculator_sumTwo(t *testing.T) {
 			Re:       1,
 			Im:       1,
 			Cache:    1,
-			Temp:     2,
-			Period:   10,
+			Temp:     1,
+			Period:   -1,
 		}},
 		// TODO: Add test cases.
 	}
