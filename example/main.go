@@ -13,7 +13,7 @@ func main() {
 	wma := new(ma.Ticker).NewWMA(9)
 	dema := new(ma.Ticker).NewDEMA(9)
 	data := GetCandlestick("1d", "20", "BTCUSDT")
-	for _, v := range * data {
+	for _, v := range *data {
 		date := time.Unix(0, v.Time*int64(time.Millisecond)).Format("2006-01-02 15:04:05")
 		macd.Update(v.Close, time.Unix(0, v.Time*int64(time.Millisecond)))
 		ema.Update(v.Close, time.Unix(0, v.Time*int64(time.Millisecond)))

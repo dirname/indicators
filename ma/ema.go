@@ -2,6 +2,7 @@ package ma
 
 import "time"
 
+//EMA EMA
 type EMA struct {
 	Value      float64
 	Calculator *emaCalculator
