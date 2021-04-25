@@ -1370,6 +1370,33 @@ func Test_mamaCalculator_sumTwo(t *testing.T) {
 			Temp:     2,
 			Period:   3,
 		}},
+		{"Test_mamaCalculator_sumTwo", fields{
+			Ticker: &Ticker{
+				Price: 0,
+				Date:  time.Now(),
+			},
+			Deg:      180.0 / (4.0 * math.Atan(1)),
+			Odd:      make([]float64, 3, 3),
+			Even:     make([]float64, 3, 3),
+			Q1Even:   make([]float64, 3, 3),
+			Q1Odd:    make([]float64, 3, 3),
+			JIEven:   make([]float64, 3, 3),
+			JIOdd:    make([]float64, 3, 3),
+			JQEven:   make([]float64, 3, 3),
+			JQOdd:    make([]float64, 3, 3),
+			WMAValue: make([]float64, 0, 5),
+			ParamA:   0.0962,
+			ParamB:   0.5769,
+			I2Value:  1,
+			PrevI2:   1,
+			PrevQ2:   1,
+			Q2Value:  1,
+			Re:       1,
+			Im:       1,
+			Cache:    1,
+			Temp:     2,
+			Period:   10,
+		}},
 		// TODO: Add test cases.
 	}
 	for _, tt := range tests {
@@ -1436,7 +1463,15 @@ func Test_mamaCalculator_sumTwo(t *testing.T) {
 				Count:           tt.fields.Count,
 				HilbertIdx:      tt.fields.HilbertIdx,
 			}
-			s.sumThree()
+			s.sumTwo()
 		})
+	}
+}
+
+func BenchmarkMAMA_Update(b *testing.B) {
+	ticker := &Ticker{}
+	mama := ticker.NewMAMA(9, 26)
+	for n := 0; n < b.N; n++ {
+		mama.Update(float64(n), time.Now())
 	}
 }
