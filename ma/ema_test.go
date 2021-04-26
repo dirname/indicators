@@ -146,28 +146,6 @@ func Test_emaCalculator_calcEMA(t *testing.T) {
 			MA:     0,
 			K:      0,
 		}},
-		//{"Test_emaCalculator_calcEMA", fields{
-		//	Ticker: &Ticker{
-		//		Price: 0,
-		//		Date:  time.Now(),
-		//	},
-		//	Temp:   0,
-		//	Period: 10,
-		//	Count:  9,
-		//	MA:     0,
-		//	K:      0,
-		//}},
-		//{"Test_emaCalculator_calcEMA", fields{
-		//	Ticker: &Ticker{
-		//		Price: 0,
-		//		Date:  time.Now(),
-		//	},
-		//	Temp:   0,
-		//	Period: 5,
-		//	Count:  10,
-		//	MA:     0,
-		//	K:      0,
-		//}},
 		// TODO: Add test cases.
 	}
 	for _, tt := range tests {

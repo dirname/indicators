@@ -153,10 +153,12 @@ func Test_trimaCalculator_calcTRIMA(t1 *testing.T) {
 				Price: 0,
 				Date:  time.Now(),
 			},
-			MiddleIdx: 4,
-			Temp:      make([]float64, 6),
-			Count:     5,
-			Period:    9,
+			TrailingIdx: 1,
+			MiddleIdx:   4,
+			Idx:         4,
+			Temp:        make([]float64, 9, 10),
+			Count:       10,
+			Period:      9,
 		}},
 		{"Test_trimaCalculator_calcTRIMA", fields{
 			Ticker: &Ticker{
@@ -168,6 +170,21 @@ func Test_trimaCalculator_calcTRIMA(t1 *testing.T) {
 			SubDone:     true,
 			TrailingIdx: 1,
 			MiddleIdx:   4,
+			Period:      9,
+			Idx:         4,
+			Temp:        make([]float64, 18),
+		}},
+		{"Test_trimaCalculator_calcTRIMA", fields{
+			Ticker: &Ticker{
+				Price: 0,
+				Date:  time.Now(),
+			},
+			Count:       8,
+			AddDone:     true,
+			SubDone:     true,
+			TrailingIdx: 1,
+			MiddleIdx:   4,
+			Period:      8,
 			Idx:         4,
 			Temp:        make([]float64, 18),
 		}},
@@ -194,5 +211,13 @@ func Test_trimaCalculator_calcTRIMA(t1 *testing.T) {
 			}
 			t.calcTRIMA()
 		})
+	}
+}
+
+func BenchmarkTRIMA_Update(b *testing.B) {
+	ticker := &Ticker{}
+	trima := ticker.NewTRIMA(9)
+	for n := 0; n < b.N; n++ {
+		trima.Update(float64(n), time.Now())
 	}
 }
