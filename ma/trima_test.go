@@ -148,6 +148,29 @@ func Test_trimaCalculator_calcTRIMA(t1 *testing.T) {
 			},
 			Period: 9,
 		}},
+		{"Test_trimaCalculator_calcTRIMA", fields{
+			Ticker: &Ticker{
+				Price: 0,
+				Date:  time.Now(),
+			},
+			MiddleIdx: 4,
+			Temp:      make([]float64, 6),
+			Count:     5,
+			Period:    9,
+		}},
+		{"Test_trimaCalculator_calcTRIMA", fields{
+			Ticker: &Ticker{
+				Price: 0,
+				Date:  time.Now(),
+			},
+			Count:       8,
+			AddDone:     true,
+			SubDone:     true,
+			TrailingIdx: 1,
+			MiddleIdx:   4,
+			Idx:         4,
+			Temp:        make([]float64, 18),
+		}},
 		// TODO: Add test cases.
 	}
 	for _, tt := range tests {
