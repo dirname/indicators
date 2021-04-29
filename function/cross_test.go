@@ -25,6 +25,12 @@ func TestCross_CrossOver(t *testing.T) {
 			second: 0,
 		}, false},
 		{"TestCross_CrossOver", fields{Calculator: &crossCalculator{
+			Count: 1,
+		}}, args{
+			first:  0,
+			second: 0,
+		}, false},
+		{"TestCross_CrossOver", fields{Calculator: &crossCalculator{
 			First:       -0.8,
 			FirstValue:  0,
 			Second:      -0.5,
@@ -63,6 +69,12 @@ func TestCross_CrossUnder(t *testing.T) {
 		want   bool
 	}{
 		{"TestCross_CrossUnder", fields{Calculator: &crossCalculator{
+		}}, args{
+			first:  0,
+			second: 0,
+		}, false},
+		{"TestCross_CrossUnder", fields{Calculator: &crossCalculator{
+			Count: 1,
 		}}, args{
 			first:  0,
 			second: 0,
