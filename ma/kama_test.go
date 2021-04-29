@@ -118,6 +118,15 @@ func TestKamaCalculator_calcKAMA(t *testing.T) {
 			Period: 3,
 			Temp:   make([]float64, 8),
 		}},
+		{"TestKamaCalculator_calcKAMA", fields{
+			Ticker: &Ticker{
+				Price: 1000,
+				Date:  time.Now(),
+			},
+			Count:  4,
+			Period: 3,
+			Temp:   make([]float64, 8),
+		}},
 		// TODO: Add test cases.
 	}
 	for _, tt := range tests {
@@ -171,5 +180,13 @@ func TestTicker_NewKAMA(t1 *testing.T) {
 				t1.Errorf("NewKAMA() = %v, want %v", got, tt.want)
 			}
 		})
+	}
+}
+
+func BenchmarkKAMA_Update(b *testing.B) {
+	ticker := &Ticker{}
+	kama := ticker.NewKAMA(9)
+	for n := 0; n < b.N; n++ {
+		kama.Update(float64(n), time.Now())
 	}
 }
