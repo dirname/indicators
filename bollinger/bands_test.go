@@ -29,6 +29,22 @@ func TestBands_Sum(t *testing.T) {
 			MAObject: new(ma.Ticker).NewSMA(9),
 			StdDev:   new(common.Ticker).NewStdDev(9, 1.0),
 		}}, args{"TEST"}, 0},
+		{"TestBands_Sum", fields{Calculator: &bollingerBandsCalculator{
+			Ticker: &Ticker{
+				Price: 0,
+				Date:  time.Now(),
+			},
+			MAObject: new(ma.Ticker).NewSMA(9),
+			StdDev:   new(common.Ticker).NewStdDev(9, 1.0),
+		}}, args{"UPPER"}, 0},
+		{"TestBands_Sum", fields{Calculator: &bollingerBandsCalculator{
+			Ticker: &Ticker{
+				Price: 0,
+				Date:  time.Now(),
+			},
+			MAObject: new(ma.Ticker).NewSMA(9),
+			StdDev:   new(common.Ticker).NewStdDev(9, 1.0),
+		}}, args{"LOWER"}, 0},
 		// TODO: Add test cases.
 	}
 	for _, tt := range tests {

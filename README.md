@@ -39,6 +39,8 @@ needs of trading
 | BenchmarkKAMA_Update-12 | 44349830 | 24.15 ns/op
 | BenchmarkT3MA_Update-12 | 69494372 | 16.94 ns/op
 | BenchmarkBands_Update-12 | 27291334 | 39.07 ns/op
+| BenchmarkCross_CrossOver-12 | 651629235 | 1.799 ns/op
+| BenchmarkCross_CrossUnder-12 | 643732273 | 1.815 ns/op
 
 # Indexes
 
