@@ -5,8 +5,8 @@ import (
 	"time"
 )
 
-//KamaCalculator KAMA
-type KamaCalculator struct {
+//kamaCalculator KAMA
+type kamaCalculator struct {
 	*Ticker
 	Period        int32
 	Count         int32
@@ -24,13 +24,13 @@ type KamaCalculator struct {
 //KAMA KAMA
 type KAMA struct {
 	Value      float64
-	Calculator *KamaCalculator
+	Calculator *kamaCalculator
 }
 
 //NewKAMA new KAMA
 func (t *Ticker) NewKAMA(inTimePeriod int32) *KAMA {
 	max := 2.0 / 31.0
-	calculator := &KamaCalculator{
+	calculator := &kamaCalculator{
 		Ticker: t,
 		Period: inTimePeriod,
 		Max:    max,
@@ -43,7 +43,7 @@ func (t *Ticker) NewKAMA(inTimePeriod int32) *KAMA {
 }
 
 //calcKAMA calculate KAMA
-func (c *KamaCalculator) calcKAMA() {
+func (c *kamaCalculator) calcKAMA() {
 	c.Temp = append(c.Temp, c.Price)
 	if c.Count <= c.Period && len(c.Temp) >= 2 {
 		c.SumROC += math.Abs(c.Temp[c.Count-1] - c.Temp[c.Count])
