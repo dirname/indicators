@@ -12,7 +12,13 @@
 
 The main purpose of the repository is to rewrite some indicator methods
 of [trading-indicator](https://gitlab.com/afis/trading-indicator/) into its own real-time trading system to meet the
-needs of trading
+needs of trading.
+
+# Documents & Wiki
+
+If you need more information about this repository and how to use technical indicators, please read
+the [wiki](https://github.com/dirname/indicators/wiki). After reading the wiki, you can quickly use this library and
+quote technical indicators.
 
 # Benchmark
 
@@ -42,77 +48,12 @@ needs of trading
 | BenchmarkCross_CrossOver-12 | 651629235 | 1.799 ns/op
 | BenchmarkCross_CrossUnder-12 | 643732273 | 1.815 ns/op
 
-# Indexes
+# Disclaimer
 
-- [Moving Average Convergence/Divergence, MACD](#moving-average-convergencedivergence)
-- [Relative Strength Index, RSI](#relative-strength-index)
-- [Money Flow index, MFI](#money-flow-index)
-- [Moving Average, SMA](#simple-moving-average)
+The purpose of this repository is to learn technical indicators, **not** in the *production environment*, so some
+technical indicators may be wrong under certain conditions. Please use it with caution, and expand the R&D according to
+your own situation.
 
-# Moving Average Convergence/Divergence
-
-```go
-package main
-
-import (
-	"github.com/dirname/indicators/macd"
-	"time"
-)
-
-func main() {
-	ticker := &macd.Ticker{}
-	MACD := ticker.NewMACD(12, 26, 9)
-	MACD.Update(0, time.Now())
-}
-```
-
-# Relative Strength Index
-
-```go
-package main
-
-import (
-	"github.com/dirname/indicators/rsi"
-	"time"
-)
-
-func main() {
-	ticker := &rsi.Ticker{}
-	RSI := ticker.NewRSI(14)
-	RSI.Update(0, time.Now())
-}
-```
-
-# Money Flow index
-
-```go
-package main
-
-import (
-	"github.com/dirname/indicators/mfi"
-	"time"
-)
-
-func main() {
-	ticker := &mfi.Ticker{}
-	MFI := ticker.NewMFI(14)
-	MFI.Update(0, 0, 0, 0, 0, time.Now())
-}
-```
-
-# Simple Moving Average
-
-```go
-package main
-
-import (
-	"github.com/dirname/indicators/ma"
-	"time"
-)
-
-func main() {
-	ticker := &ma.Ticker{}
-	SMA := ticker.NewSMA(9)
-	SMA.Update(0, time.Now())
-}
-```
+**In addition**, the performance and stability of this repository and the correctness of the technical indicators need
+to be tested by yourself, and the losses caused by the performance or stability and the correctness of the indicators
+should be **borne by you**.
