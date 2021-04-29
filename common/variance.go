@@ -48,12 +48,6 @@ func (s *varianceCalculator) calcVariance() {
 	}
 }
 
-//setPrice set up price
-func (t *Ticker) setPrice(price float64, date time.Time) {
-	t.Price = price
-	t.Date = date
-}
-
 //Update Update the variance value of the current price
 func (v *Variance) Update(price float64, date time.Time) {
 	v.Calculator.setPrice(price, date)

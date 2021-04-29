@@ -13,3 +13,9 @@ func (t *Ticker) setPrice(price float64, date time.Time) {
 	t.Price = price
 	t.Date = date
 }
+
+//Object ma object
+type Object interface {
+	Sum() float64
+	Update(price float64, date time.Time)
+}
