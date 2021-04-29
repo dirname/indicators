@@ -247,6 +247,23 @@ func Test_t3maCalculator_calcT3MA(t *testing.T) {
 			Temp:      make([]float64, 35),
 			TempValue: 0,
 		}},
+		{"Test_t3maCalculator_calcT3MA", fields{
+			Ticker: &Ticker{
+				Price: 0,
+				Date:  time.Now(),
+			},
+			Period:    37,
+			Factor:    9,
+			Count:     100,
+			E1Done:    false,
+			E2Done:    true,
+			E3Done:    true,
+			E4Done:    true,
+			E5Done:    true,
+			E6Done:    true,
+			Temp:      make([]float64, 35),
+			TempValue: 0,
+		}},
 
 		// TODO: Add test cases.
 	}
