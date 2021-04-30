@@ -135,7 +135,7 @@ func (c *t3maCalculator) calcT3MA() {
 			c.Result = c.C1*c.E6 + c.C2*c.E5 + c.C3*c.E4 + c.C4*c.E3
 		}
 	}
-	if c.E1Done && c.E2Done && c.E3Done && c.E4Done && c.E5Done && c.E6Done && len(c.Temp) > 0 {
+	if c.E6Done && len(c.Temp) > 0 {
 		c.E1 = (c.K * c.Temp[0]) + (c.OneMinusK * c.E1)
 		c.E2 = (c.K * c.E1) + (c.OneMinusK * c.E2)
 		c.E3 = (c.K * c.E2) + (c.OneMinusK * c.E3)
