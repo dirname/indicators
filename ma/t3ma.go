@@ -63,6 +63,22 @@ func (c *t3maCalculator) calcT3MA() {
 		return
 	}
 	c.Temp = append(c.Temp, c.Price)
+	c.calcE()
+	if c.E6Done && len(c.Temp) > 0 {
+		c.E1 = (c.K * c.Temp[0]) + (c.OneMinusK * c.E1)
+		c.E2 = (c.K * c.E1) + (c.OneMinusK * c.E2)
+		c.E3 = (c.K * c.E2) + (c.OneMinusK * c.E3)
+		c.E4 = (c.K * c.E3) + (c.OneMinusK * c.E4)
+		c.E5 = (c.K * c.E4) + (c.OneMinusK * c.E5)
+		c.E6 = (c.K * c.E5) + (c.OneMinusK * c.E6)
+		c.Result = c.C1*c.E6 + c.C2*c.E5 + c.C3*c.E4 + c.C4*c.E3
+		c.Temp = c.Temp[0:0]
+	}
+	c.Count++
+}
+
+//calcE calculate E
+func (c *t3maCalculator) calcE() {
 	if int32(len(c.Temp)) == c.Period-1 {
 		switch {
 		case !c.E1Done:
@@ -135,17 +151,6 @@ func (c *t3maCalculator) calcT3MA() {
 			c.Result = c.C1*c.E6 + c.C2*c.E5 + c.C3*c.E4 + c.C4*c.E3
 		}
 	}
-	if c.E6Done && len(c.Temp) > 0 {
-		c.E1 = (c.K * c.Temp[0]) + (c.OneMinusK * c.E1)
-		c.E2 = (c.K * c.E1) + (c.OneMinusK * c.E2)
-		c.E3 = (c.K * c.E2) + (c.OneMinusK * c.E3)
-		c.E4 = (c.K * c.E3) + (c.OneMinusK * c.E4)
-		c.E5 = (c.K * c.E4) + (c.OneMinusK * c.E5)
-		c.E6 = (c.K * c.E5) + (c.OneMinusK * c.E6)
-		c.Result = c.C1*c.E6 + c.C2*c.E5 + c.C3*c.E4 + c.C4*c.E3
-		c.Temp = c.Temp[0:0]
-	}
-	c.Count++
 }
 
 //Update Update the T3MA value of the current price

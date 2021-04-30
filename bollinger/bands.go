@@ -71,6 +71,7 @@ func (b *Bands) Update(price float64, date time.Time) {
 	b.Calculator.calcBands()
 }
 
+//Sum Returns the Bands value of the current Bollinger object
 func (b *Bands) Sum(flag string) float64 {
 	switch flag {
 	case "UPPER":
